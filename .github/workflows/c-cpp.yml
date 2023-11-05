@@ -22,7 +22,7 @@ jobs:
         g++ --version
 
     - name: Build C++ code
-      run: g++ -o your_program_name main.cpp  
+      run: g++ -o test main.cpp  
 
     - name: Run C++ tests
       run: ./test  
