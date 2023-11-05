@@ -1,3 +1,4 @@
+[![ubuntu](https://github.com/DiggerMan-cpp/PNG-converter/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/DiggerMan-cpp/PNG-converter/actions/workflows/c-cpp.yml)
 # PNG-converter
 Convert PNG to PPM/BMP/ICO
 ```bash
