@@ -16,18 +16,19 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up C++ environment
-      uses: actions/setup-cpp@v1
-      with:
-        compiler: 'g++' 
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install g++ -y
+        g++ --version
 
     - name: Build C++ code
-      run: g++ -o your_program_name main.cpp  # Укажите имя исполняемого файла и имя вашего исходного файла
+      run: g++ -o your_program_name main.cpp  
 
     - name: Run C++ tests
-      run: ./test 
+      run: ./test  
 
     - name: Publish test results
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: ./build/test_results/ 
+        path: ./build/test_results/  
