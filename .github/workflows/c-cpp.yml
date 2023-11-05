@@ -1,0 +1,33 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up C++ environment
+      uses: actions/setup-cpp@v1
+      with:
+        compiler: 'g++' 
+
+    - name: Build C++ code
+      run: g++ -o your_program_name main.cpp  # Укажите имя исполняемого файла и имя вашего исходного файла
+
+    - name: Run C++ tests
+      run: ./test 
+
+    - name: Publish test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: ./build/test_results/ 
