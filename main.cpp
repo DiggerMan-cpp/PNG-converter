@@ -161,12 +161,12 @@ int main(int argc, char* argv[]) {
     std::string format;
     if (argc < 2) {
         PrintUsage();
-        return 1;
+        return 0;
     }
 
     if (argc != 7) {
         std::cerr << "usage: ./image_converter --input <input.png> --output <output> --format <ppm/bmp/ico>" << std::endl;
-        return 1;
+        return 0;
     }
 
     for (int i = 1; i < argc; i++) {
