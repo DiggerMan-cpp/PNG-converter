@@ -1,0 +1,30 @@
+name: Update README
+
+on:
+  workflow_run:
+    workflows: ["C/C++ CI"]
+    types:
+      - completed
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Build Status
+        run: |
+          build_status=$(echo ${{ github.event.workflow_run.conclusion }})
+          if [ "$build_status" == "success" ]; then
+            echo "Build Status: $build_status" >> README.md
+          fi
+        shell: bash
+
+      - name: Commit Changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Update README with build status"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
